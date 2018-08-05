@@ -1,0 +1,38 @@
+body {
+    background-image: url("../images/banana_background.png");
+    background-repeat: repeat;
+}
+
+.randomNumber {
+    background-color: red;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+}
+
+.crystalCount {
+    background-color: orange;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.wins {
+    background-color: red;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+}
+
+.losses {
+    background-color: red;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+}
+
+.spacer_top_25 {
+    margin-top: 25px;
+}
+
+.spacer_right_28 {
+    margin-right: 28px;
+}
