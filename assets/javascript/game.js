@@ -1,78 +1,90 @@
-/// We need to create our initial variables, similar to the other assignements so far
-// Work in Progress, need better definition of variables and values
+$(document).ready(function () {
+    var Random = Math.floor(Math.random() * 101 + 19);
+    $('#numberToMatch').text(Random);
 
-let wins = 0;
-let losses = 0;
-let guesses = null;
-let guessedCrystals = [];
+    var userTotal = 0;
+    var wins = 0;
+    var losses = 0;
 
-/// This second designation will define the random range of numbers for the final score
-var lowEndTotal = 19;
-var highEndTotal = 120;
-var computerChoices = [];
-while (lowEndTotal <= highEndTotal) {
-    computerChoices.push(lowEndTotal++);
-}
+    var greenCrystalNum = Math.floor(Math.random() * 11 + 1)
+    var blueCrystalNum = Math.floor(Math.random() * 11 + 1)
+    var redCrystalNum = Math.floor(Math.random() * 11 + 1)
+    var yellowCrystalNum = Math.floor(Math.random() * 11 + 1)
 
-/// Now that the range has been identified, the random number selector is run and picks from within the defined range
-var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-console.log(computerGuess);
-$('#computerChoice').append(computerGuess);
+    $('#userWins').text(wins);
+    $('#userLosses').text(losses);
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// This following designations will define the random range of numbers for the value of the crystals, including the randomizer
-/// RED CRYSTAL VALUE DESIGNATOR
-var lowEndCrystals = 1;
-var highEndCrystals = 12;
-var redCrystalChoices = [];
-while (lowEndCrystals <= highEndCrystals) {
-    redCrystalChoices.push(lowEndCrystals++);
-}
-var redCrystal = redCrystalChoices[Math.floor(Math.random() * redCrystalChoices.length)];
-console.log("Red Crystal Value= " + redCrystal);
-///
+    function gameWin() {
+        alert("You win the game!");
+        wins++;
+        $('#userWins').text(wins);
+        reset();
+    }
+
+    function gameLose() {
+        alert("Loser!");
+        losses++;
+        $('#userLosses').text(losses);
+        reset();
+    }
+
+    function reset() {
+        Random = Math.floor(Math.random() * 101 + 19);
+        console.log(Random)
+        $('#numberToMatch').text(Random);
+        greenCrystalNum = Math.floor(Math.random() * 11 + 1);
+        blueCrystalNum = Math.floor(Math.random() * 11 + 1);
+        redCrystalNum = Math.floor(Math.random() * 11 + 1);
+        yellowCrystalNum = Math.floor(Math.random() * 11 + 1);
+        userTotal = 0;
+        $('#finalTotal').text(userTotal);
+    }
+
+    $('#greenCrystal').on('click', function () {
+        userTotal = userTotal + greenCrystalNum;
+        console.log("New userTotal= " + userTotal);
+        $('#finalTotal').text(userTotal);
+        if (userTotal === Random) {
+            gameWin();
+        } else if (userTotal > Random) {
+            gameLose();
+        }
+    })
+
+    $('#blueCrystal').on('click', function () {
+        userTotal = userTotal + blueCrystalNum;
+        console.log("New userTotal= " + userTotal);
+        $('#finalTotal').text(userTotal);
+        if (userTotal === Random) {
+            gameWin();
+        } else if (userTotal > Random) {
+            gameLose();
+        }
+    })
+
+    $('#redCrystal').on('click', function () {
+        userTotal = userTotal + redCrystalNum;
+        console.log("New userTotal= " + userTotal);
+        $('#finalTotal').text(userTotal);
+        if (userTotal === Random) {
+            gameWin();
+        } else if (userTotal > Random) {
+            gameLose();
+        }
+    })
+
+    $('#yellowCrystal').on('click', function () {
+        userTotal = userTotal + yellowCrystalNum;
+        console.log("New userTotal= " + userTotal);
+        $('#finalTotal').text(userTotal);
+        if (userTotal === Random) {
+            gameWin();
+        } else if (userTotal > Random) {
+            gameLose();
+        }
+    })
 
 
-/// BLUE CRYSTAL VALUE DESIGNATOR
-var lowEndCrystals = 1;
-var highEndCrystals = 12;
-var blueCrystalChoices = [];
-while (lowEndCrystals <= highEndCrystals) {
-    blueCrystalChoices.push(lowEndCrystals++);
-}
-var blueCrystal = blueCrystalChoices[Math.floor(Math.random() * blueCrystalChoices.length)];
-console.log("Blue Crystal Value= " + blueCrystal);
-///
 
 
-/// GREEN CRYSTAL VALUE DESIGNATOR
-var lowEndCrystals = 1;
-var highEndCrystals = 12;
-var greenCrystalChoices = [];
-while (lowEndCrystals <= highEndCrystals) {
-    greenCrystalChoices.push(lowEndCrystals++);
-}
-var greenCrystal = greenCrystalChoices[Math.floor(Math.random() * greenCrystalChoices.length)];
-console.log("Green Crystal Value= " + greenCrystal);
-///
-
-
-/// YELLOW CRYSTAL VALUE DESIGNATOR
-var lowEndCrystals = 1;
-var highEndCrystals = 12;
-var yellowCrystalChoices = [];
-while (lowEndCrystals <= highEndCrystals) {
-    yellowCrystalChoices.push(lowEndCrystals++);
-}
-var yellowCrystal = yellowCrystalChoices[Math.floor(Math.random() * yellowCrystalChoices.length)];
-console.log("Yellow Crystal Value= " + yellowCrystal);
-///
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Conjunction Function
-
-// I need to write the mechanics now that will deliver the randomized value on click for each crystal into the sum of 'userCount' and increment
-
-$('#greenCrystal').on('click', function () {
-    $('#userCount').html(greenCrystal)
-});
+})
